@@ -5,5 +5,6 @@ import "primevue/resources/themes/lara-light-indigo/theme.css";
 import '/node_modules/primeflex/primeflex.css'
 import App from './App.vue'
 
-createApp(App).mount('#app')
-App.use(PrimeVue)
+const app = createApp(App)
+app.use(PrimeVue)
+app.mount('#app')
