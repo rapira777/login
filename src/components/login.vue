@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import  {login2} from './login2'
+// import  {login2} from './login'
+import login2 from './login'
 
 const username = ref('')
 const password = ref('')
@@ -9,7 +10,6 @@ const submitForm = (event: Event) => {
   event.preventDefault()
   const isError = !login2(username.value, password.value)
 
-  // Проверяем данные и выполняем логику авторизации здесь
   if (!isError) {
     console.log('Успешная авторизация!')
   } else {
@@ -39,4 +39,4 @@ const submitForm = (event: Event) => {
 <style scoped>
 
 </style>
-./login2
+./login
