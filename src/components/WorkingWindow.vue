@@ -2,5 +2,6 @@
 </script>
 
 <template>
-    <p>Hello</p>
+    <p>Вы в программе</p>
+    <button type="submit">Выход</button>
 </template>

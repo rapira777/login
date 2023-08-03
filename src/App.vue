@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import login from './components/login.vue'
+import LoginForm from './components/LoginForm.vue'
+import WorkingWindow from './components/WorkingWindow.vue'
+import {isLogged} from './state'
 </script>
 
 <template>
-  <p>123</p>
-  <login />
+  <WorkingWindow v-if="isLogged"/>
+  <LoginForm v-else />
 </template>
 
 <style scoped>
