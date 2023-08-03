@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import {isLogged} from '../state'
+
 </script>
 
 <template>
     <p>Вы в программе</p>
-    <button type="submit">Выход</button>
+    <button @click="isLogged=false">Выход</button>
 </template>
