@@ -8,9 +8,9 @@ import { isLogged } from '..//state'
   <div class="root">
     <div class="form">
       <label>Вход в систему:</label>
-      <input type="text" />
-      <input type="password" />
-      <button @click="isLogged = true">Вход</button>
+      <InputText />
+      <InputText />
+      <Button @click="isLogged = true">Вход</Button>
     </div>
   </div>
 </template>
@@ -29,7 +29,7 @@ import { isLogged } from '..//state'
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #5372F0;
+  background: #5372f0;
 }
 .form {
   display: flex;
@@ -40,7 +40,5 @@ import { isLogged } from '..//state'
   /* padding: 40px 30px 50px 30px; Так в исходнике */
   border-radius: 5px;
   background: #fff;
- 
-
 }
 </style>
