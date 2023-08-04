@@ -7,10 +7,10 @@ import { isLogged } from '..//state'
 <template>
   <div class="root">
     <div class="form">
-      <label>Вход в систему:</label>
-      <InputText />
-      <InputText />
-      <Button @click="isLogged = true">Вход</Button>
+      <label class="label">Вход в систему:</label>
+      <InputText class="input" />
+      <InputText class="input" />
+      <Button class="button" @click="isLogged = true">Вход</Button>
     </div>
   </div>
 </template>
@@ -40,5 +40,18 @@ import { isLogged } from '..//state'
   /* padding: 40px 30px 50px 30px; Так в исходнике */
   border-radius: 5px;
   background: #fff;
+}
+.label {
+  margin: 10px;
+  /*margin-top: 10px;  верхний внешний отступ */
+  /*margin-right: 10px;  правый внешний отступ */
+  /*margin-bottom: 10px;  нижний внешний отступ */
+  /*margin-left: 10px;  левый внешний отступ */
+}
+.input {
+  margin: 10px;
+}
+.button {
+  margin: 10px;
 }
 </style>
