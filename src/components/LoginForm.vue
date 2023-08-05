@@ -8,8 +8,20 @@ import { isLogged } from '..//state'
   <div class="root">
     <div class="form">
       <label class="label">Вход в систему:</label>
-      <InputText class="input" />
-      <InputText class="input" />
+      <div class="flex flex-column gap-2">
+        <span class="p-input-icon-left">
+          <i class="pi pi-user" />
+          <InputText class="p-invalid" />
+        </span>
+        <small>Введите имя пользователя</small>
+      </div>
+      <div class="flex flex-column gap-2">
+      <span class="p-input-icon-left">
+        <i class="pi pi-lock" />
+        <InputText class="p-invalid" />
+      </span>
+      <small>Введите пароль</small>
+      </div>
       <Button class="button" @click="isLogged = true">Вход</Button>
     </div>
   </div>
@@ -30,28 +42,31 @@ import { isLogged } from '..//state'
   justify-content: center;
   align-items: center;
   background: #5372f0;
+  font-family: 'Poppins', sans-serif;
 }
 .form {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  /* box-shadow: 10px 10px 15px rgba(0,0,0,0.1);  Так в исходнике*/
+  /* border: 1px solid black; */
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1); /* Так в исходнике */
   padding: 20px;
   /* padding: 40px 30px 50px 30px; Так в исходнике */
   border-radius: 5px;
   background: #fff;
+  text-align: center;
+}
+.form > * {
+  margin: 10px;
 }
 .label {
-  margin: 10px;
-  /*margin-top: 10px;  верхний внешний отступ */
-  /*margin-right: 10px;  правый внешний отступ */
-  /*margin-bottom: 10px;  нижний внешний отступ */
-  /*margin-left: 10px;  левый внешний отступ */
+  font-size: 35px;
+  font-weight: 600;
 }
-.input {
-  margin: 10px;
+.p-invalid {
+  font-size: 18px;
+  padding-right: 55px; /* Здесь учитывается ширина иконки и дается немного дополнительного пространства */
 }
 .button {
-  margin: 10px;
+  justify-content: center;
 }
 </style>
