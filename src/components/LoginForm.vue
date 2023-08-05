@@ -9,15 +9,15 @@ import { isLogged } from '..//state'
     <div class="form">
       <label class="label">Вход в систему:</label>
       <div class="flex flex-column gap-2">
-        <span class="p-input-icon-left">
+        <span class="p-input-icon-right">
           <i class="pi pi-user" />
           <InputText class="p-invalid" />
         </span>
         <small>Введите имя пользователя</small>
       </div>
       <div class="flex flex-column gap-2">
-      <span class="p-input-icon-left">
-        <i class="pi pi-lock" />
+      <span class="p-input-icon-right">
+        <i class="pi pi-eye" />
         <InputText class="p-invalid" />
       </span>
       <small>Введите пароль</small>
@@ -58,10 +58,13 @@ import { isLogged } from '..//state'
 .form > * {
   margin: 10px;
 }
+
+
 .label {
   font-size: 35px;
   font-weight: 600;
 }
+
 .p-invalid {
   font-size: 18px;
   padding-right: 55px; /* Здесь учитывается ширина иконки и дается немного дополнительного пространства */
