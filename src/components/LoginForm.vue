@@ -9,18 +9,22 @@ import { isLogged } from '..//state'
     <div class="form">
       <label class="label">Вход в систему:</label>
       <div class="flex flex-column gap-2">
-        <span class="p-input-icon-right">
-          <i class="pi pi-user" />
-          <InputText class="p-invalid" />
-        </span>
+        <div class="icon-input">
+          <span class="p-input-icon-right">
+            <i class="pi pi-user" />
+            <InputText class="p-invalid" />
+          </span>
+        </div>
         <small>Введите имя пользователя</small>
       </div>
       <div class="flex flex-column gap-2">
-      <span class="p-input-icon-right">
-        <i class="pi pi-eye" />
-        <InputText class="p-invalid" />
-      </span>
-      <small>Введите пароль</small>
+        <div class="icon-input">
+          <span class="p-input-icon-right">
+            <i class="pi pi-eye" />
+            <InputText class="p-invalid" />
+          </span>
+        </div>
+        <small>Введите пароль</small>
       </div>
       <Button class="button" @click="isLogged = true">Вход</Button>
     </div>
@@ -44,18 +48,21 @@ import { isLogged } from '..//state'
   background: #5372f0;
   font-family: 'Poppins', sans-serif;
 }
+
 .form {
   display: flex;
   flex-direction: column;
   /* border: 1px solid black; */
-  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1); /* Так в исходнике */
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.1);
+  /* Так в исходнике */
   padding: 20px;
   /* padding: 40px 30px 50px 30px; Так в исходнике */
   border-radius: 5px;
   background: #fff;
   text-align: center;
 }
-.form > * {
+
+.form>* {
   margin: 10px;
 }
 
@@ -65,10 +72,16 @@ import { isLogged } from '..//state'
   font-weight: 600;
 }
 
-.p-invalid {
+/* .p-invalid {
+  /* font-size: 18px;
+  padding-right: 55px; */
+/* Здесь учитывается ширина иконки и дается немного дополнительного пространства 
+} 
+*/
+.icon-input {
   font-size: 18px;
-  padding-right: 55px; /* Здесь учитывается ширина иконки и дается немного дополнительного пространства */
 }
+
 .button {
   justify-content: center;
 }
