@@ -9,6 +9,7 @@ import { isLogged } from '..//state'
     <div class="form">
       <label class="label">Вход в систему:</label>
       <div class="flex flex-column gap-2">
+<<<<<<< HEAD
         <div class="icon-input">
           <span class="p-input-icon-right">
             <i class="pi pi-user" />
@@ -25,6 +26,20 @@ import { isLogged } from '..//state'
           </span>
         </div>
         <small>Введите пароль</small>
+=======
+        <span class="p-input-icon-left">
+          <i class="pi pi-user" />
+          <InputText class="p-invalid" />
+        </span>
+        <small>Введите имя пользователя</small>
+      </div>
+      <div class="flex flex-column gap-2">
+      <span class="p-input-icon-left">
+        <i class="pi pi-lock" />
+        <InputText class="p-invalid" />
+      </span>
+      <small>Введите пароль</small>
+>>>>>>> parent of b6570e0 (Начальная верстка(Советы №3, конечный вариант))
       </div>
       <Button class="button" @click="isLogged = true">Вход</Button>
     </div>
@@ -65,12 +80,11 @@ import { isLogged } from '..//state'
 .form>* {
   margin: 10px;
 }
-
-
 .label {
   font-size: 35px;
   font-weight: 600;
 }
+<<<<<<< HEAD
 
 /* .p-invalid {
   /* font-size: 18px;
@@ -79,6 +93,9 @@ import { isLogged } from '..//state'
 } 
 */
 .icon-input {
+=======
+.p-invalid {
+>>>>>>> parent of b6570e0 (Начальная верстка(Советы №3, конечный вариант))
   font-size: 18px;
 }
 
