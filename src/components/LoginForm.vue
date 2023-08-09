@@ -11,22 +11,21 @@ import { isLogged } from '..//state'
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i class="pi pi-user" />
-          <InputText class="p-invalid" placeholder="Введите имя пользователя"/>
+          <InputText class="p-invalid" placeholder="Введите имя пользователя" />
         </span>
-        <small>Введите имя пользователя</small>
-      </div>
+      
+      <small>Введите имя пользователя</small></div>
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i class="pi pi-eye" />
-          <InputText class="p-invalid" type="password" placeholder="Введите пароль"/>
+          <InputText class="p-invalid" type="password" placeholder="Введите пароль" />
         </span>
         <small>Введите пароль</small>
-       
       </div>
       <Button class="button" @click="isLogged = true">Вход</Button>
     </div>
   </div>
-    </template>
+</template>
 
 <style scoped>
 .root {
@@ -62,6 +61,7 @@ import { isLogged } from '..//state'
 .form>* {
   margin: 10px;
 }
+
 
 .label {
   font-size: 35px;
