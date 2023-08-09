@@ -9,42 +9,24 @@ import { isLogged } from '..//state'
     <div class="form">
       <label class="label">Вход в систему:</label>
       <div class="flex flex-column gap-2">
-<<<<<<< HEAD
-        <div class="icon-input">
-          <span class="p-input-icon-right">
-            <i class="pi pi-user" />
-            <InputText class="p-invalid" />
-          </span>
-        </div>
-        <small>Введите имя пользователя</small>
-      </div>
-      <div class="flex flex-column gap-2">
-        <div class="icon-input">
-          <span class="p-input-icon-right">
-            <i class="pi pi-eye" />
-            <InputText class="p-invalid" />
-          </span>
-        </div>
-        <small>Введите пароль</small>
-=======
-        <span class="p-input-icon-left">
+        <span class="p-input-icon-right">
           <i class="pi pi-user" />
-          <InputText class="p-invalid" />
+          <InputText class="p-invalid" placeholder="Введите имя пользователя"/>
         </span>
         <small>Введите имя пользователя</small>
       </div>
       <div class="flex flex-column gap-2">
-      <span class="p-input-icon-left">
-        <i class="pi pi-lock" />
-        <InputText class="p-invalid" />
-      </span>
-      <small>Введите пароль</small>
->>>>>>> parent of b6570e0 (Начальная верстка(Советы №3, конечный вариант))
+        <span class="p-input-icon-right">
+          <i class="pi pi-eye" />
+          <InputText class="p-invalid" type="password" placeholder="Введите пароль"/>
+        </span>
+        <small>Введите пароль</small>
+       
       </div>
       <Button class="button" @click="isLogged = true">Вход</Button>
     </div>
   </div>
-</template>
+    </template>
 
 <style scoped>
 .root {
@@ -80,23 +62,17 @@ import { isLogged } from '..//state'
 .form>* {
   margin: 10px;
 }
+
 .label {
   font-size: 35px;
   font-weight: 600;
 }
-<<<<<<< HEAD
 
-/* .p-invalid {
-  /* font-size: 18px;
-  padding-right: 55px; */
-/* Здесь учитывается ширина иконки и дается немного дополнительного пространства 
-} 
-*/
-.icon-input {
-=======
 .p-invalid {
->>>>>>> parent of b6570e0 (Начальная верстка(Советы №3, конечный вариант))
   font-size: 18px;
+  width: 100%;
+  /* padding-right: 55px;  Убираю магию*/
+  /* Здесь учитывается ширина иконки и дается немного дополнительного пространства */
 }
 
 .button {
