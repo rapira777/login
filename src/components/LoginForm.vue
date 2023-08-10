@@ -2,6 +2,10 @@
 import { ref } from 'vue'
 import login2 from '../login'
 import { isLogged } from '..//state'
+
+const isPasswordHide = ref('true');
+const user =ref('')
+const password=ref('')
 </script>
 
 <template>
@@ -11,14 +15,14 @@ import { isLogged } from '..//state'
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i class="pi pi-user" />
-          <InputText class="p-invalid" placeholder="Введите имя пользователя" />
+          <InputText class="inputText"  v-model="user" placeholder="Введите имя пользователя" />
         </span>
       
       <small>Введите имя пользователя</small></div>
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
-          <i class="pi pi-eye" />
-          <InputText class="p-invalid" type="password" placeholder="Введите пароль" />
+          <i :class="{'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide}" @click="isPasswordHide=!isPasswordHide"/>
+          <InputText class="inputText" :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
         </span>
         <small>Введите пароль</small>
       </div>
@@ -74,7 +78,10 @@ import { isLogged } from '..//state'
   /* padding-right: 55px;  Убираю магию*/
   /* Здесь учитывается ширина иконки и дается немного дополнительного пространства */
 }
-
+.inputText {
+  font-size: 18px;
+  width: 100%;
+}
 .button {
   justify-content: center;
 }
