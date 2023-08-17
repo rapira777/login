@@ -6,6 +6,8 @@ import { isLogged } from '..//state'
 const isPasswordHide = ref('true');
 const user =ref('')
 const password=ref('')
+const pwdAlertMsg=ref('Введите пароль')
+const usrAlertMsg= ref('Введите имя пользователя')
 </script>
 
 <template>
@@ -18,13 +20,13 @@ const password=ref('')
           <InputText class="inputText"  v-model="user" placeholder="Введите имя пользователя" />
         </span>
       
-      <small>Введите имя пользователя</small></div>
+      <small class="smallMsg">{{usrAlertMsg}}</small></div>
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i :class="{'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide}" @click="isPasswordHide=!isPasswordHide"/>
           <InputText class="inputText" :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
         </span>
-        <small>Введите пароль</small>
+        <small class="smallMsg">{{pwdAlertMsg}}</small>
       </div>
       <Button class="button" @click="isLogged = true">Вход</Button>
     </div>
@@ -84,5 +86,8 @@ const password=ref('')
 }
 .button {
   justify-content: center;
+}
+.smallMsg{
+  height: 20px;
 }
 </style>
