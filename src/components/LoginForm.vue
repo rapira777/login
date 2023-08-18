@@ -3,11 +3,13 @@ import { ref } from 'vue'
 import login2 from '../login'
 import { isLogged } from '..//state'
 
-const isPasswordHide = ref('true');
+const isPasswordHide = ref(true);
 const user =ref('')
 const password=ref('')
-const pwdAlertMsg=ref('Введите пароль')
-const usrAlertMsg= ref('Введите имя пользователя')
+const pwdAlertMsg=ref('')
+const usrAlertMsg= ref('')
+// usrAlertMsg.value = 'Введите имя пользователя'
+// pwdAlertMsg.value = 'Введите пароль'
 </script>
 
 <template>
@@ -23,7 +25,7 @@ const usrAlertMsg= ref('Введите имя пользователя')
       <small class="smallMsg">{{usrAlertMsg}}</small></div>
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
-          <i :class="{'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide}" @click="isPasswordHide=!isPasswordHide"/>
+          <i class="cursor-pointer" :class="{'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide}" @click="isPasswordHide=!isPasswordHide"/>
           <InputText class="inputText" :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
         </span>
         <small class="smallMsg">{{pwdAlertMsg}}</small>
