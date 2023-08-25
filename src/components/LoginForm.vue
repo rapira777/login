@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import login2 from '../login'
 import { isLogged } from '..//state'
 
@@ -10,6 +10,16 @@ const pwdAlertMsg=ref('')
 const usrAlertMsg= ref('')
 // usrAlertMsg.value = 'Введите имя пользователя'
 // pwdAlertMsg.value = 'Введите пароль'
+watch(() =>user,(user)=> {
+  if (user.value.length>3) {
+  console.log("Query server - "+user.value)
+  usrAlertMsg.value = ""
+  } else {
+    console.log("No query -" + user.value)
+    usrAlertMsg.value = "Маловато символов!"
+  }
+},
+  { deep: true })
 </script>
 
 <template>
