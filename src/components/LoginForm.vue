@@ -10,16 +10,25 @@ const pwdAlertMsg=ref('')
 const usrAlertMsg= ref('')
 // usrAlertMsg.value = 'Введите имя пользователя'
 // pwdAlertMsg.value = 'Введите пароль'
-watch(user,(value)=> {
-  if (value.length>3) {
-  console.log("Query server - "+value)
-  usrAlertMsg.value = ""
-  } else {
-    console.log("No query -" + value)
-    usrAlertMsg.value = "Маловато символов!"
+// watch(user,(value)=> {
+//   if (value.length>3) {
+//   console.log("Query server - "+value)
+//   usrAlertMsg.value = ""
+//   } else {
+//     console.log("No query -" + value)
+//     usrAlertMsg.value = "Маловато символов!"
+//   }
+// },
+//   { deep: true })
+const Submit = ()=>{
+  if (user.value.length>3) {
+    console.log("Query server - "+user.value)
+    usrAlertMsg.value = ""
+    } else {
+      console.log("No query -" + user.value)
+      usrAlertMsg.value = "Маловато символов!"
   }
-},
-  { deep: true })
+}
 </script>
 
 <template>
@@ -29,18 +38,19 @@ watch(user,(value)=> {
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i class="pi pi-user" />
-          <InputText class="inputText"  v-model="user" placeholder="Введите имя пользователя" />
+          <InputText class="inputText" :class="{'p-invalid': usrAlertMsg!==''}" v-model="user" placeholder="Введите имя пользователя" />
         </span>
       
       <small class="smallMsg">{{usrAlertMsg}}</small></div>
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i class="cursor-pointer" :class="{'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide}" @click="isPasswordHide=!isPasswordHide"/>
-          <InputText class="inputText" :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
+          <InputText class="inputText" :class="{'p-invalid': pwdAlertMsg!==''}" :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
         </span>
         <small class="smallMsg">{{pwdAlertMsg}}</small>
       </div>
-      <Button class="button" @click="isLogged = true">Вход</Button>
+      <!-- <Button class="button" @click="isLogged = true">Вход</Button> -->
+      <Button class="button" @click="Submit">Вход</Button>
     </div>
   </div>
 </template>
