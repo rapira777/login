@@ -10,12 +10,12 @@ const pwdAlertMsg=ref('')
 const usrAlertMsg= ref('')
 // usrAlertMsg.value = 'Введите имя пользователя'
 // pwdAlertMsg.value = 'Введите пароль'
-watch(() =>user,(user)=> {
-  if (user.value.length>3) {
-  console.log("Query server - "+user.value)
+watch(user,(value)=> {
+  if (value.length>3) {
+  console.log("Query server - "+value)
   usrAlertMsg.value = ""
   } else {
-    console.log("No query -" + user.value)
+    console.log("No query -" + value)
     usrAlertMsg.value = "Маловато символов!"
   }
 },
@@ -101,5 +101,7 @@ watch(() =>user,(user)=> {
 }
 .smallMsg{
   height: 20px;
+  color: red; 
+  font-weight: 500;
 }
 </style>
