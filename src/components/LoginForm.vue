@@ -4,10 +4,10 @@ import login2 from '../login'
 import { isLogged } from '..//state'
 
 const isPasswordHide = ref(true);
-const user =ref('')
-const password=ref('')
-const pwdAlertMsg=ref('')
-const usrAlertMsg= ref('')
+const user = ref('')
+const password = ref('')
+const pwdAlertMsg = ref('')
+const usrAlertMsg = ref('')
 // usrAlertMsg.value = 'Введите имя пользователя'
 // pwdAlertMsg.value = 'Введите пароль'
 // watch(user,(value)=> {
@@ -20,13 +20,27 @@ const usrAlertMsg= ref('')
 //   }
 // },
 //   { deep: true })
-const Submit = ()=>{
-  if (user.value.length>3) {
-    console.log("Query server - "+user.value)
-    usrAlertMsg.value = ""
+const Submit = () => {
+  if (user.value.length > 3) {
+    if (password.value.length > 3) {
+      // Обрабатываем событие входа
+      login2(user.value, password.value)
+
+      // Заходим
+      usrAlertMsg.value = ''
+      pwdAlertMsg.value = ''
+      isLogged.value = true
     } else {
-      console.log("No query -" + user.value)
-      usrAlertMsg.value = "Маловато символов!"
+      pwdAlertMsg.value = 'Длина пароля не менее 4х символов!'
+      usrAlertMsg.value = ''
+    }
+  } else {
+    usrAlertMsg.value = 'Длина учетной записи не менее 4х символов!'
+    if (password.value.length < 4) {
+      pwdAlertMsg.value = 'Длина пароля не менее 4х символов!'
+    } else {
+      pwdAlertMsg.value = ''
+    }
   }
 }
 </script>
@@ -38,16 +52,20 @@ const Submit = ()=>{
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i class="pi pi-user" />
-          <InputText class="inputText" :class="{'p-invalid': usrAlertMsg!==''}" v-model="user" placeholder="Введите имя пользователя" />
+          <InputText class="inputText" :class="{ 'p-invalid': usrAlertMsg !== '' }" v-model="user"
+            placeholder="Введите имя пользователя" />
         </span>
-      
-      <small class="smallMsg">{{usrAlertMsg}}</small></div>
+
+        <small class="smallMsg">{{ usrAlertMsg }}</small>
+      </div>
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
-          <i class="cursor-pointer" :class="{'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide}" @click="isPasswordHide=!isPasswordHide"/>
-          <InputText class="inputText" :class="{'p-invalid': pwdAlertMsg!==''}" :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
+          <i class="cursor-pointer" :class="{ 'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide }"
+            @click="isPasswordHide = !isPasswordHide" />
+          <InputText class="inputText" :class="{ 'p-invalid': pwdAlertMsg !== '' }"
+            :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
         </span>
-        <small class="smallMsg">{{pwdAlertMsg}}</small>
+        <small class="smallMsg">{{ pwdAlertMsg }}</small>
       </div>
       <!-- <Button class="button" @click="isLogged = true">Вход</Button> -->
       <Button class="button" @click="Submit">Вход</Button>
@@ -102,16 +120,18 @@ const Submit = ()=>{
   /* padding-right: 55px;  Убираю магию*/
   /* Здесь учитывается ширина иконки и дается немного дополнительного пространства */
 }
+
 .inputText {
   font-size: 18px;
   width: 100%;
 }
+
 .button {
   justify-content: center;
 }
-.smallMsg{
+
+.smallMsg {
   height: 20px;
-  color: red; 
+  color: red;
   font-weight: 500;
-}
-</style>
+}</style>
