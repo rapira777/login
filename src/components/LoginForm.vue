@@ -10,16 +10,19 @@ const pwdAlertMsg = ref('')
 const usrAlertMsg = ref('')
 // usrAlertMsg.value = 'Введите имя пользователя'
 // pwdAlertMsg.value = 'Введите пароль'
-// watch(user,(value)=> {
-//   if (value.length>3) {
-//   console.log("Query server - "+value)
-//   usrAlertMsg.value = ""
-//   } else {
-//     console.log("No query -" + value)
-//     usrAlertMsg.value = "Маловато символов!"
-//   }
-// },
-//   { deep: true })
+watch(user,(value)=> {
+  if ((value.length===0) || (value.length>3)) {
+   usrAlertMsg.value = ""
+  } 
+},
+  { deep: true })
+
+watch(password,(value)=> {
+  if ((value.length===0) || (value.length>3)) {
+   pwdAlertMsg.value = ""
+  } 
+},
+  { deep: true })
 const Submit = () => {
   if (user.value.length > 3) {
     if (password.value.length > 3) {
