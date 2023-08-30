@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import login2 from '../login'
-import {type ResponseType} from '../login'
+import { type ResponseType } from '../login'
 import { isLogged } from '..//state'
 
 const isPasswordHide = ref(true);
@@ -11,29 +11,43 @@ const pwdAlertMsg = ref('')
 const usrAlertMsg = ref('')
 // usrAlertMsg.value = 'Введите имя пользователя'
 // pwdAlertMsg.value = 'Введите пароль'
-watch(user,(value)=> {
-  if ((value.length===0) || (value.length>3)) {
-   usrAlertMsg.value = ""
-  } 
+watch(user, (value) => {
+  if ((value.length === 0) || (value.length > 3)) {
+    usrAlertMsg.value = ""
+  }
 },
   { deep: true })
 
-watch(password,(value)=> {
-  if ((value.length===0) || (value.length>3)) {
-   pwdAlertMsg.value = ""
-  } 
+watch(password, (value) => {
+  if ((value.length === 0) || (value.length > 3)) {
+    pwdAlertMsg.value = ""
+  }
 },
   { deep: true })
-const Submit = () => {
+const Submit = async () => {
   if (user.value.length > 3) {
     if (password.value.length > 3) {
-      // Обрабатываем событие входа
-      const isError: Promise<ResponseType> = login2(user.value, password.value)
-       console.log(isError) 
-      // Заходим
-      usrAlertMsg.value = ''
-      pwdAlertMsg.value = ''
-      isLogged.value = true
+      // Получаем события входа
+      const response: ResponseType = await login2(user.value, password.value)
+      if (response.result) {
+        // Заходим
+        console.log(response.userId)
+        usrAlertMsg.value = ''
+        pwdAlertMsg.value = ''
+        isLogged.value = true
+      } else {
+        if (response.error === 'invalid_user_name') {
+          usrAlertMsg.value = 'Не верная учетная запись!'
+        } else {
+          if (response.error === 'wrong_password') {
+            pwdAlertMsg.value = 'Не верный пароль!'
+          } else {
+            usrAlertMsg.value = 'Что то пошло не так!'
+          }
+        }
+      }
+
+
     } else {
       pwdAlertMsg.value = 'Длина пароля не менее 4х символов!'
       usrAlertMsg.value = ''
@@ -138,4 +152,5 @@ const Submit = () => {
   height: 20px;
   color: red;
   font-weight: 500;
-}</style>
+}
+</style>
