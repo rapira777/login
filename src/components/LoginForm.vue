@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import login2 from '../login'
-import type ResponseType from '../login'
+import {type ResponseType} from '../login'
 import { isLogged } from '..//state'
 
 const isPasswordHide = ref(true);
