@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import login2 from '../login'
+import type ResponseType from '../login'
 import { isLogged } from '..//state'
 
 const isPasswordHide = ref(true);
@@ -27,8 +28,8 @@ const Submit = () => {
   if (user.value.length > 3) {
     if (password.value.length > 3) {
       // Обрабатываем событие входа
-      login2(user.value, password.value)
-
+      const isError: Promise<ResponseType> = login2(user.value, password.value)
+       console.log(isError) 
       // Заходим
       usrAlertMsg.value = ''
       pwdAlertMsg.value = ''
