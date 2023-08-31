@@ -69,7 +69,8 @@ const Submit = async () => {
       <label class="label">Вход в систему:</label>
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
-          <i class="pi pi-user" />
+          <!-- <i class="pi pi-user" /> -->
+          <i class="cursor-pointer pi pi-eraser" @click="user=''"/>
           <InputText class="inputText" :class="{ 'p-invalid': usrAlertMsg !== '' }" v-model="user"
             placeholder="Введите имя пользователя" />
         </span>
