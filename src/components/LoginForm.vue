@@ -81,7 +81,7 @@ const Submit = async () => {
           <i class="cursor-pointer" :class="{ 'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide }"
             @click="isPasswordHide = !isPasswordHide" />
           <InputText class="inputText" :class="{ 'p-invalid': pwdAlertMsg !== '' }"
-            :type="isPasswordHide ? 'password' : 'text'" v-model="password" placeholder="Введите пароль" />
+            :type="isPasswordHide ? 'password' : 'text'" @keyup.enter="Submit" v-model="password" placeholder="Введите пароль" />
         </span>
         <small class="smallMsg">{{ pwdAlertMsg }}</small>
       </div>
