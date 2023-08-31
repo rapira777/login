@@ -70,7 +70,7 @@ const Submit = async () => {
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <!-- <i class="pi pi-user" /> -->
-          <i class="cursor-pointer pi pi-eraser" @click="user=''"/>
+          <i class="cursor-pointer pi pi-eraser" @click="user=''" title="Очистить поле"/>
           <InputText class="inputText" :class="{ 'p-invalid': usrAlertMsg !== '' }" v-model="user"
             placeholder="Введите имя пользователя" />
         </span>
@@ -80,7 +80,7 @@ const Submit = async () => {
       <div class="flex flex-column gap-2">
         <span class="p-input-icon-right">
           <i class="cursor-pointer" :class="{ 'pi pi-eye': isPasswordHide, 'pi pi-eye-slash': !isPasswordHide }"
-            @click="isPasswordHide = !isPasswordHide" />
+            @click="isPasswordHide = !isPasswordHide" title="Показать/скрыть пароль"/>
           <InputText class="inputText" :class="{ 'p-invalid': pwdAlertMsg !== '' }"
             :type="isPasswordHide ? 'password' : 'text'" @keyup.enter="Submit" v-model="password" placeholder="Введите пароль" />
         </span>
